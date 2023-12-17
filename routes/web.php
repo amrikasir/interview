@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authentication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/daftar', [Authentication::class, 'daftar']);
+Route::post('/daftar', [Authentication::class, 'register'])->name('daftar');
