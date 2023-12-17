@@ -19,6 +19,7 @@ class Mobil extends Model
         'model',
         'plat',
         'tarif',
-        'status'
+        'status',
+        'gambar'
     ];
 }

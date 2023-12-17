@@ -7,60 +7,61 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## How to use
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Untuk menggunakan aplikasi web-based ini, clone repository ini ke dalam directory kerja ( htdocs jika menggunakan XAMPP ) kemudian install dependency dengan menggunakan composer*.
+Jika tidak ada composer, baca bagian [Requirement]
+Lihat [Installation] untuk proses Installasi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirement
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.1
+- [composer](https://getcomposer.org/download/)
+- php8.1-sqlite3 (optional)
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- install **dependency** menggunakan composer 
+```sh
+composer install
+```
+- rename file ```.env.example``` menjadi ```.env```
+- ubah value `mysql` yang ada di `DB_CONNECTION` didalam file .env menjadi ``sqlite`` ( jika ingin menggunakan sqlite sebagai database )
+- buat file baru di folder database dengan nama ``database.sqlite`` ( jika ingin menggunakan sqlite sebagai database).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- jalankan perintah artisan dibawah untuk membuat key, table database, dan data pertama.
+```sh
+php artisan key:generate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+php artisan migrate
 
-## Laravel Sponsors
+php artisan db:seed
+```
+- aplikasi siap digunakan, login admin menggunakan email `ini_email@admin` dan password `password`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## Feature Aplikasi
+1. Registrasi Pengguna: **dilakukan saat meminjam kendaraan, jika data sadah ada, saat input nomor SIM, data pengguna akan di tampilkan**
+- Pengguna dapat mendaftar dengan mengisi informasi pribadi seperti nama, alamat, nomor telepon, dan nomor SIM.
+- Informasi pengguna harus disimpan dan dapat diakses kembali.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. Manajemen Mobil: **terdapat menu input data mobil**
+- Pengguna dapat menambahkan mobil baru ke dalam sistem dengan mengisi detail mobil seperti merek, model, nomor plat, dan tarif sewa per hari.
+- Data mobil yang ditambahkan harus disimpan dalam sistem dan dapat diakses kembali.
+- Pengguna dapat mencari mobil berdasarkan merek, model, atau ketersediaan.
+- Pengguna dapat melihat daftar semua mobil yang tersedia untuk disewa.
 
-## Contributing
+3. Peminjaman Mobil: **terdapat menu peminjaman**
+- Pengguna dapat memesan mobil dengan memasukkan tanggal mulai dan tanggal selesai penyewaan, serta memilih mobil yang tersedia.
+- Sistem harus memverifikasi ketersediaan mobil pada tanggal yang diminta.
+- Data peminjaman harus disimpan dan dapat diakses kembali.
+- Pengguna dapat melihat daftar mobil yang sedang mereka sewa.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Pengembalian Mobil: **terdapat menu pengembalian**
+- Pengguna dapat mengembalikan mobil yang telah mereka sewa dengan memasukkan nomor plat mobil.
+- Sistem harus memverifikasi bahwa mobil tersebut benar-benar disewa oleh pengguna tersebut dan menghitung jumlah hari penyewaan.
+- Data pengembalian harus disimpan dan dapat diakses kembali.
+- Sistem harus menghitung jumlah biaya sewa berdasarkan tarif harian dan durasi sewa.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. Keluar Aplikasi: **terdapat menu logout**
+- Pengguna dapat keluar dari aplikasi & login lagi di lain waktu

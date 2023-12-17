@@ -18,13 +18,7 @@
             <div class="col-sm-8">
                 <h2><b style="text-transform:uppercase;">{{ config('app.name'); }}</b></h2>
             </div>
-            <div class="col-sm-4">
-                <form class="form-inline" method="get" action="blog.php">
-                    <input class="form-control mr-sm-2" type="search" name="cari" placeholder="Cari Nama Mobil"
-                        aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
+            
         </div>
     </div>
     <div style="margin-top:-2pc"></div>
@@ -37,28 +31,31 @@
             <a class="navbar-brand" href="#"></a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="blog.php">Daftar Mobil</a>
+                    <a class="nav-link" href="blog.php">Filter Mobil</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="kontak.php">Kontak Kami</a>
+                    <a class="nav-link" href="{{ route('mobil.pinjam') }}">Peminjaman</a>
                 </li>
-                @auth
-                    <li class="nav-item active">
-                        <a class="nav-link" href="history.php">History</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="profil.php">Profil</a>
-                    </li>
-                @endauth
+                <li class="nav-item active">
+                    <a class="nav-link" href="kontak.php">Pengembalian</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="history.php">History</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('mobil.input') }}">Input Data Mobil</a>
+                </li>
+
             </ul>
             @auth
             <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="fa fa-user"> </i> Hallo, <?php echo $_SESSION['USER']['nama_pengguna']; ?>
+                        <i class="fa fa-user"> </i> Hallo, {{ Auth::user()->name }}
                     </a>
                 </li>
                 <li class="nav-item">

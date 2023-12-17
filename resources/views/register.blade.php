@@ -46,14 +46,18 @@
                                     <label for="phone_number" class="required">Nomor HP</label>
                                     <input type="text" name="phone_number" id="phone_number" />
                                 </div>
-                                <div class="form-input">
-                                    <label for="email" class="required">Alamat Email</label>
-                                    <input type="text" name="email" id="email" />
-                                </div>
-                                <div class="form-input">
-                                    <label for="password" class="required">Password</label>
-                                    <input type="password" name="password" id="password" />
-                                </div>
+
+                                {{--
+                                    <div class="form-input">
+                                        <label for="email" class="required">Alamat Email</label>
+                                        <input type="text" name="email" id="email" />
+                                    </div>
+                                    <div class="form-input">
+                                        <label for="password" class="required">Password</label>
+                                        <input type="password" name="password" id="password" />
+                                    </div> 
+                                --}}
+                                
                                 <div class="form-submit">
                                     <input type="submit" value="Daftar" class="submit" id="submit" name="submit" />
                                 </div>

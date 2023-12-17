@@ -9,6 +9,8 @@ class Peminjaman extends Model
 {
     use HasFactory;
 
+    protected $table = 'peminjaman';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,7 +18,6 @@ class Peminjaman extends Model
      */
     protected $fillable = [
         'user_id',
-        'mobil_id',
         'book_at',
         'return_at',
     ];
